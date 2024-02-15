@@ -7,6 +7,7 @@ const questionTitle = document.getElementById("question-title");
 const choices = document.getElementById("choices");
 const questionsIndex = 0;
 
+
 const countDown = 90;
 
 // initialising the quizz
@@ -49,4 +50,30 @@ btn.setAttribute("style", "display: block");
 document.body.appendChild(btn);
 btn.appendChild(document.createTextNode(choices));
 
+
+
+//fonction for feedback
+
+function buttonClick(userSelect, correctAnswer){
+if(userSelect===correctAnswer){
+alert("This is the correct answer!");
+questionsIndex++;
+displayQuestions(questionsIndex);
+} else{
+    alert("whoops! wrong answer")
+}
+};
+}
+
+function displayQuestions(index){
+    const prevChoices= document.getElementById("btn");
+    prevChoices.forEach(function(element){
+    element.remove();
+    });
+
+    if(index<questions.length){
+        radioBtn(questions[index]);
+    }else{
+        alert("You have completed the quizz!");
+    }
 }
